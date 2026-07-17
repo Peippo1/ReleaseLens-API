@@ -1,0 +1,32 @@
+name: ReleaseLens
+description: Generate verified public release notes and internal rollout guidance from a commit range.
+inputs:
+  api-url:
+    description: ReleaseLens API base URL
+    required: true
+  api-key:
+    description: Tenant API key
+    required: true
+  installation-id:
+    description: GitHub App installation ID
+    required: true
+  base:
+    description: Base commit or tag
+    required: true
+  head:
+    description: Head commit or tag
+    required: true
+  wait:
+    description: Wait for the report to complete
+    default: "true"
+  comment:
+    description: Post public release notes as a pull-request comment when running in a PR workflow
+    default: "false"
+outputs:
+  report-id:
+    description: ReleaseLens report ID
+  public-notes:
+    description: Generated public release notes in Markdown
+runs:
+  using: node20
+  main: index.js
